@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vue 记事本</title>
+    <!-- 引入 Vue CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .notebook {
+            width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .input-field {
+            display: block;
+            width: 100%;
+            padding: 5px 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 5px 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .task-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .task-id {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            background-color: #ccc;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .task-name {
+            flex-grow: 1;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .completed-task {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .task-count {
+            text-align: right;
+            color: #999;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="notebook">
+                <h1>Vue 记事本</h1>
+
+                <form class="form-group" @submit.prevent="addTask">
+                    <label for="task-input">添加任务：</label>
+                    <input type="text" id="task-input" class="input-field" v-model="newTask" required />
+                    <button type="submit" class="button">添加</button>
+                </form>
+
+                <ul class="task-list">
+                    <li class="task-item" v-for="(task, index) in tasks" :key="index">
+                        <span class="task-id">{{ index + 1 }}</span>
+                        <span class="task-name" :class="{ 'completed-task': task.completed }">{{ task.name }}</span>
+                        <button class="button" @click="toggleTask(index)">完成</button>
+                        <button class="button" @click="deleteTask(index)">删除</button>
+                    </li>
+                </ul>
+
+                <p class="task-count">合计任务数量: {{ taskCount }}</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                tasks: [],
+                newTask: ''
+            },
+            computed: {
+                taskCount() {
+                    return this.tasks.length;
+                }
+            },
+            methods: {
+                addTask() {
+                    if (this.newTask.trim() !== '') {
+                        this.tasks.push({ name: this.newTask, completed: false });
+                        this.newTask = '';
+                    }
+                },
+                toggleTask(index) {
+                    this.tasks[index].completed = !this.tasks[index].completed;
+                },
+                deleteTask(index) {
+                    this.tasks.splice(index, 1);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
