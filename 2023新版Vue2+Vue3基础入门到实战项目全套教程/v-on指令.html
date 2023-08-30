@@ -1,0 +1,26 @@
+<div id="app">
+    <h1>{{ con }}</h1>
+    <button @click="con ++">+</button>
+    <button @click="con --">-</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello, Vue!',
+            con: 100
+        },
+        methods: {
+            updateMessage() {
+                this.message = '更新后的消息';
+            }
+        }
+    });
+</script>
+
+<style scoped>
+    /* Your scoped CSS styles here */
+</style>

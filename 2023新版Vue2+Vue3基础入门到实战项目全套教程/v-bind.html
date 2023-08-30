@@ -1,0 +1,26 @@
+<div id="app">
+    <button v-show="index > 0" @click="index--">上一页</button>
+    <img :src="imgUrl[index]" :title="msg" alt="">
+    <button v-show="index < imgUrl.length -1" @click="index++">下一页</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            msg: 'Hello, Vue!',
+            index: 0,
+            imgUrl: ['https://via.placeholder.com/200x200?text=1',
+                'https://via.placeholder.com/200x200?text=2',
+                'https://via.placeholder.com/200x200?text=3',
+                'https://via.placeholder.com/200x200?text=4',
+                'https://via.placeholder.com/200x200?text=5']
+        }
+    });
+</script>
+
+<style scoped>
+    /* Your scoped CSS styles here */
+</style>

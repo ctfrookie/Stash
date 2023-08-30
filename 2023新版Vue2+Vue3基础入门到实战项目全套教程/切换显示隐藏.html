@@ -1,0 +1,35 @@
+<div id="app">
+    <button @click="fn">点击更新消息</button>
+    <h1 v-show="message">显示隐藏</h1>
+    <button @click="buy(n)">减去{{n}}</button>
+    <button @click="buy(n2)">减去{{n2}}</button>
+    <h1>{{money}}</h1>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message: true,
+            money: 100,
+            n: 10,
+            n2: 5
+        },
+        methods: {
+            fn() {
+                this.message = !this.message;
+                this.abc = !this.abc;
+            },
+            buy(n) {
+                this.money -= n;
+            }
+        }
+    });
+</script>
+
+<style scoped>
+    /* Your scoped CSS styles here */
+</style>

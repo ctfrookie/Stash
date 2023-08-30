@@ -1,0 +1,37 @@
+<div id="app">
+    <p @mouseover="hideElement" @mouseout="showElement" v-show="isVisible">
+        This paragraph is visible when you hover over it.
+    </p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            isVisible: true
+        },
+        methods: {
+            showElement: function () {
+                this.isVisible = true;
+            },
+            hideElement: function () {
+                this.isVisible = false;
+            }
+        }
+    });
+</script>
+
+<style>
+    #app {
+        text-align: center;
+        padding: 20px;
+    }
+
+    p {
+        font-size: 18px;
+        margin-top: 20px;
+        color: #333;
+
+    }
+</style>
