@@ -4,7 +4,7 @@
 
 ## 仓库列表
 
-1. [项目一]([https://github.com/lhwebpage/2048]): 这是一个2048小游戏。
+1. [项目一](https://github.com/lhwebpage/2048): 这是一个2048小游戏。
 
 ![1](https://user-images.githubusercontent.com/112057820/261802941-0160719f-c81a-4758-9579-a11050566e7e.png)
 
