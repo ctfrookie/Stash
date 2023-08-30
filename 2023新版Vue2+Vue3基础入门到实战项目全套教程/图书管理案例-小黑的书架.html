@@ -1,0 +1,49 @@
+<div id="app">
+    <h3>小黑的书架</h3>
+    <ul>
+        <li v-for="(item,index) in booksList" :key="item">
+            <span>{{item.name}}</span>
+            <span>{{item.author}}</span>
+            <!-- 注册点击事件 > 通过id进行删除数组中的对应项 -->
+            <button @click="deleteBook(item.id)">删除</button>
+        </li>
+    </ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            booksList: [
+                { id: 1, name: 'JavaScript', author: '小黑' },
+                { id: 2, name: 'Java', author: '小白' },
+                { id: 3, name: 'Python', author: '小紫' },
+                { id: 4, name: 'C++', author: '小青' }
+            ]
+        },
+        methods: {
+            deleteBook(id) {
+                // console.log("删除",id);
+                //通过id进行删除数组中的对应项 
+                //filter过滤器
+                this.booksList = this.booksList.filter(item => item.id !== id);
+                //也可以使用splice方法splice方法的作用是删除数组中的某项
+                // this.booksList.splice(index,1);
+            }
+        }
+    });
+</script>
+
+<style scoped>
+    li {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    /* Your scoped CSS styles here */
+</style>

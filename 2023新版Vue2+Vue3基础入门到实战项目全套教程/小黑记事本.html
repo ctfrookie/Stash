@@ -1,0 +1,199 @@
+<div class="container ">
+    <div id="app">
+        <h1>小黑记事本</h1>
+        <div class="add-todo">
+            <input v-model="todoName" placeholder="请输入任务" class="new-todo" type="text" />
+            <button @click="add" class="add-button">添加任务</button>
+        </div>
+        <ul class="todo-list">
+            <li v-for="(item, index) in list" :key="item.id">
+                <input type="checkbox" class="toggle" v-model="item.completed" />
+                <label :class="{ 'completed': item.completed }">{{index + 1}}. {{item.name}}</label>
+                <button @click="del(item.id)" class="destroy">×</button>
+            </li>
+        </ul>
+        <footer class="footer" v-show="list.length > 0">
+            <span class="todo-count">合计:<strong>{{list.length}}</strong></span>
+            <button class="clear-completed" @click="clearCompleted">清空已完成任务</button>
+        </footer>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            todoName: '',
+            list: [
+                { id: 1, name: '敲一百行代码', completed: false },
+                { id: 2, name: '学完Vue', completed: false },
+                { id: 3, name: '拿到offer', completed: false },
+                { id: 4, name: '去旅游', completed: false }
+            ]
+        },
+        methods: {
+            del(id) {
+                this.list = this.list.filter(item => item.id !== id)
+            },
+            add() {
+                if (this.todoName.trim() === '') {
+                    alert('请输入任务名称')
+                    return
+                }
+                this.list.unshift({
+                    id: +new Date(),
+                    name: this.todoName,
+                    completed: false
+                })
+                this.todoName = ''
+            },
+            clearCompleted() {
+                this.list = this.list.filter(item => !item.completed)
+            }
+        }
+    });
+</script>
+
+<style scoped>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 400px;
+        width: 400px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #3b4147;
+    }
+
+    .add-todo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .new-todo {
+        flex-grow: 1;
+        padding: 5px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .add-button {
+        border: 0px;
+        padding: 6px;
+        margin-left: 10px;
+        background-color: #4caf50;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .add-button:hover {
+        background-color: #388e3c;
+    }
+
+    .todo-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .todo-list li {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        font-size: 16px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .toggle {
+        margin-right: 10px;
+    }
+
+    .completed label {
+        text-decoration: line-through;
+        color: #999;
+    }
+
+    .destroy {
+        margin-left: auto;
+        background-color: #f44336;
+        border: none;
+        color: white;
+        border-radius: 50%;
+        padding: 5px 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .destroy:hover {
+        background-color: #e53935;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        font-size: 14px;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .todo-count strong {
+        margin-right: 5px;
+        font-weight: bold;
+    }
+
+    .clear-completed {
+        background-color: #2196f3;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .clear-completed:hover {
+        background-color: #1976d2;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        font-size: 14px;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .todo-count strong {
+        margin-right: 5px;
+        font-weight: bold;
+    }
+
+    .clear-completed {
+        background-color: #2196f3;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .clear-completed:hover {
+        background-color: #1976d2;
+    }
+</style>

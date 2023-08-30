@@ -1,0 +1,25 @@
+<div id="app">
+    <ul>
+        <li v-for="item in list">{{item}}</li>
+    </ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            list: ["西瓜", '苹果', '香蕉', '葡萄', '火龙果']
+        },
+        methods: {
+            updateMessage() {
+                this.message = '更新后的消息';
+            }
+        }
+    });
+</script>
+
+<style scoped>
+    /* Your scoped CSS styles here */
+</style>

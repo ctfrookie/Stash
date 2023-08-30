@@ -1,0 +1,32 @@
+<!-- 1.作用:给 表单元素 使用，双向数据绑定 》可以快速 获取 或 设置 表单元素内容 -->
+<div id="app">
+    账户<input v-model="username" type="text"><br><br>
+    密码<input v-model="password" type="password"><br><br>
+    <button @click="login">登录</button>
+    <button @click="reset">重置</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            username: "",
+            password: ""
+        },
+        methods: {
+            login() {
+                console.log("登录", this.username, this.password);
+            },
+            reset() {
+                this.username = "";
+                this.password = "";
+            }
+        }
+    });
+</script>
+
+<style scoped>
+    /* Your scoped CSS styles here */
+</style>
