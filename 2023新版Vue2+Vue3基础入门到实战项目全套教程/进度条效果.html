@@ -1,0 +1,53 @@
+<div id="app">
+    <div class="progress">
+        <div class="inner" :style="{width: percent + '%'}"><br>
+            <span>{{percent}}%</span>
+        </div>
+    </div>
+    <button @click="percent= 25">设置25%</button>
+    <button @click="percent= 50">设置50%</button>
+    <button @click="percent= 75">设置75%</button>
+    <button @click="percent= 100">设置100%</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            percent: 30
+        },
+        methods: {
+
+
+
+        }
+    });
+</script>
+
+<style scoped>
+    /* Your scoped CSS styles here */
+    .progress {
+        height: 25px;
+        width: 400px;
+        border-radius: 15px;
+        background-color: black;
+        border: 3px solid black;
+        box-sizing: border-box;
+        margin-bottom: 30px;
+    }
+
+    .inner {
+        width: 50%;
+        height: 20px;
+        border-radius: 10px;
+        text-align: right;
+        background-color: #2980b9;
+        position: relative;
+        background-size: 20px 20px;
+        box-sizing: border-box;
+        transition: all 1s;
+
+    }
+</style>

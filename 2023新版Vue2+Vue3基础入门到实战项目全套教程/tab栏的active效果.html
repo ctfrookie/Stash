@@ -1,0 +1,56 @@
+<div id="app">
+    <ul>
+        <li v-for="(item,index) in list" :key="item.id" @click="activeIndex = index">
+            <a href="#" :class="{active: index === activeIndex }">{{item.name}}</a>
+        </li>
+    </ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            activeIndex: '',//记录高亮
+            list: [
+                { id: 1, name: '京东秒杀' },
+                { id: 2, name: '每日特价' },
+                { id: 3, name: '品类秒杀' }
+            ]
+        },
+        methods: {
+
+
+
+        }
+    });
+</script>
+
+<style scoped>
+    /* Your scoped CSS styles here */
+    #app {
+        font-family: Arial, sans-serif;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+    }
+
+    a.active {
+        background-color: #f5f5f5;
+        color: #ff6600;
+    }
+</style>

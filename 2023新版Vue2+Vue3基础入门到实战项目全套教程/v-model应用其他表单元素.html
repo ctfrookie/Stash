@@ -1,0 +1,47 @@
+<div id="app">
+    <h3>小黑学习网</h3>
+    姓名:
+    <input type="text" v-model="name" /><br /><br />
+
+    是否单身：
+    <input type="checkbox" v-model="isSingle" /><br /><br>
+
+    性别：
+    <input type="radio" name="gender" v-model="gender" value="1" />男
+    <input type="radio" name="gender" v-model="gender" value="2" />女<br><br>
+
+    所在城市：<select v-model="cityId">
+        <option value="10">北京</option>
+        <option value="11">上海</option>
+        <option value="12">广州</option>
+        <option value="13">深圳</option>
+    </select><br>
+
+    自我描述：<br>
+    <textarea v-model="desc"></textarea>
+    <br /><br>
+    <button>立即注册</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            name: '小黑',
+            isSingle: true,
+            gender: '1',
+            cityId: '100',
+            desc: '我是一个大帅哥'
+        },
+        methods: {
+
+
+
+        }
+    });
+</script>
+
+<style>
+    /* Your scoped CSS styles here */
+</style>
